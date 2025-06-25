@@ -65,6 +65,25 @@
 
 ---
 
+## ☕ **Jakarta (jakarta.validation.constraints)** 
+
+>**Пакет содержит аннотации для валидации данных (Bean Validation).**
+
+### **Генерация кода**
+| Аннотация                 | Описание                                                                                            | Пример |
+|---------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| `@NotNull`                 | Указывает, поле не может быть null.                                                        | [Пример](#пример-31) |
+| `@Size`                  | Проверяет размер строки/коллекции (min, max).                                                                           | [Пример](#пример-32) |
+| `@Min / @Max`                     | Число должно быть ≥ или ≤ указанного значения.                                                                            | [Пример](#пример-33) |
+| `@Positive` / `@Negative`    | Число должно быть > 0 / Число должно быть < 0.                                         | [Пример](#пример-34) |
+| `@Digits`                 | Проверяет количество цифр (целая/дробная часть).                                                                     | [Пример](#пример-35) |
+| `@NotBlank`| Проверяет, что строка не пустая (и не состоит из пробелов).                                                | [Пример](#пример-36) |
+| `@Email`                 | Проверяет формат email.                                                        | [Пример](#пример-37) |
+| `@Pattern`                  | Проверяет строку по регулярному выражению.                                                                           | [Пример](#пример-38) |
+| `@Past / @Future`                     | Проверяет дату (прошлое/будущее).                                                                            | [Пример](#пример-39) |
+| `@Valid`    |  Каскадная валидация. Валидирует вложенные объекты.                                        | [Пример](#пример-40) |
+| `@AssertTrue / @AssertFalse`                 | Проверяет булево значение.                                                                     | [Пример](#пример-41) |
+
 
 #### **Примеры**
 
@@ -1181,6 +1200,202 @@ CREATE TABLE user (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 ```
+
+
+---
+
+
+<a name="пример-31"></a>
+**`@NotNull`**  
+```java
+public class User {
+    @NotNull(message = "Имя не может быть пустым")
+    private String name;
+}
+```
+`NotNull` - *Поле не может быть null.*
+
+*Если передать null → Ошибка: "Имя не может быть пустым".*
+
+
+---
+
+
+<a name="пример-32"></a>
+**`@Size`**  
+```java
+public class Post {
+    @Size(min = 10, max = 500, message = "Текст должен быть от 10 до 500 символов")
+    private String content;
+}
+```
+
+`@Size` - *Проверка длины строки/коллекции.*
+
+*Если content.length() = 5 → Ошибка: "Текст должен быть от 10 до 500 символов".*
+
+
+---
+
+
+<a name="пример-33"></a>
+**`@Min / @Max`**  
+```java
+public class Product {
+    @Min(value = 1, message = "Цена не может быть меньше 1")
+    private int price;
+}
+```
+
+`@Min / @Max` - *Проверка числовых границ.*
+
+*Если price = 0 → Ошибка: "Цена не может быть меньше 1".*
+
+
+---
+
+
+<a name="пример-34"></a>
+**`@Positive / @Negative`**  
+```java
+public class Account {
+    @Positive(message = "Баланс должен быть положительным")
+    private double balance;
+}
+```
+
+`@Positive / @Negative` - *Число должно быть > 0 или < 0.*
+
+*Если balance = -100 → Ошибка: "Баланс должен быть положительным".*
+
+
+---
+
+
+<a name="пример-35"></a>
+**`@Digits`**  
+```java
+public class Invoice {
+    @Digits(integer = 4, fraction = 2, message = "Формат: до 4 цифр до точки и 2 после")
+    private BigDecimal amount;
+}
+```
+
+`@Positive / @Negative` - *Число должно быть > 0 или < 0.*
+
+*Если amount = 12345.678 → Ошибка: "Формат: до 4 цифр до точки и 2 после".*
+
+
+---
+
+
+<a name="пример-36"></a>
+**`@NotBlank`**  
+```java
+public class Comment {
+    @NotBlank(message = "Комментарий не может быть пустым")
+    private String text;
+}
+```
+
+`@NotBlank` - *Проверка, что строка не пустая (и не состоит из пробелов).*
+
+*Если text = " " → Ошибка: "Комментарий не может быть пустым".*
+
+
+---
+
+
+<a name="пример-37"></a>
+**`@Email`**  
+```java
+public class Contact {
+    @Email(message = "Некорректный email")
+    private String email;
+}
+```
+
+`@Email` - *Проверка формата email.*
+
+*Если email = "user.ru@" → Ошибка: "Некорректный email"*
+
+
+---
+
+
+
+<a name="пример-38"></a>
+**`@Pattern`**  
+```java
+public class Password {
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d).{8,}$", 
+             message = "Пароль: 8+ символов, 1 заглавная буква, 1 цифра")
+    private String password;
+}
+```
+
+`@Pattern` - *Проверка строки по регулярному выражению.*
+
+*Если password = "qwerty" → Ошибка: "Пароль: 8+ символов, 1 заглавная буква, 1 цифра".*
+
+
+---
+
+
+
+<a name="пример-39"></a>
+**`@Past / @Future`**  
+```java
+public class Event {
+    @Future(message = "Дата события должна быть в будущем")
+    private LocalDate eventDate;
+}
+```
+
+`@Past / @Future` - *Проверка даты (прошлое/будущее).*
+
+*Если eventDate = 2025-01-01 → Ошибка: "Дата события должна быть в будущем".*
+
+
+---
+
+
+<a name="пример-40"></a>
+**`@Valid`**  
+```java
+public class Order {
+    @Valid // Валидация полей Address
+    private Address deliveryAddress;
+}
+
+public class Address {
+    @NotBlank
+    private String city;
+}
+```
+
+`@Valid` - *Каскадная валидация. Валидирует вложенные объекты.*
+
+`@NotBlank` - *Проверка, что строка не пустая (и не состоит из пробелов).*
+
+*Если deliveryAddress.city = null → Ошибка: "city не может быть пустым".*
+
+
+---
+
+
+<a name="пример-41"></a>
+**`@AssertTrue / @AssertFalse`**  
+```java
+public class Subscription {
+    @AssertTrue(message = "Необходимо согласие с условиями")
+    private boolean termsAccepted;
+}
+```
+
+`@AssertTrue` - *Проверка булевого значения.*
+
+*Если termsAccepted = false → Ошибка: "Необходимо согласие с условиями".*
 
 
 ---
