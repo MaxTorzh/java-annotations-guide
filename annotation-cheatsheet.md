@@ -122,7 +122,7 @@ public int getAge() { return age; }
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к SpringBootAnnotations](#Spring Boot Annotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к JakartaBeanValidation](#Jakarta Bean Validation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
 
 ---
 
