@@ -24,7 +24,7 @@
 | `@Slf4j`                  | Добавляет логгер log через SLF4J.                                                                   | [Пример](#пример-10) |
 
 ---
-<a name="Spring_Boot_Annotations"></a>
+<a name="SpringBootAnnotations"></a>
 ## 🌱 **Spring Boot Annotations**
 
 >**Spring Boot** — *фреймворк для быстрой разработки Java-приложений. Он использует `аннотации` вместо `XML-конфигураций`, чтобы сделать код более читаемым и поддерживаемым.*
@@ -64,7 +64,7 @@
 | `@CreationTimestamp`, `@UpdateTimestamp` (Hibernate)   | Автоматически обновляет даты создания/обновления.                      | [Пример](#пример-30) |
 
 ---
-<a name="Jakarta_Bean_Validation"></a>
+<a name="JakartaBeanValidation"></a>
 ## ☕ **Jakarta (jakarta.validation.constraints)** 
 
 >**Пакет содержит аннотации для валидации данных (Bean Validation).**
@@ -122,7 +122,7 @@ public int getAge() { return age; }
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring_Boot_Annotations](#Spring Boot Annotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta_Bean_Validation](#Jakarta Bean Validation)
+[Обратно к Lombok](#Lombok) / [Обратно к SpringBootAnnotations](#Spring Boot Annotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к JakartaBeanValidation](#Jakarta Bean Validation)
 
 ---
 
