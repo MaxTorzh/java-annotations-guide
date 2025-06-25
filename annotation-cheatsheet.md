@@ -137,6 +137,8 @@ public @interface ValidLogin {
 - CONSTRUCTOR — конструкторы.
 
 
+## Продолжение следует ... 
+
 ---
 
 
