@@ -23,7 +23,7 @@
 
 #### **Примеры**
 <a name="пример-1"></a>
-**1.**
+**`@Getter`/`@Setter`**
 ```java
 public class User {
     @Getter @Setter
@@ -41,8 +41,17 @@ public class User {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
+**Сгенерированные методы:**
+```java
+public String getName() { return name; }
+public void setName(String name) { this.name = name; }
+
+public int getAge() { return age; }
+// setAge() не генерируется для age
+```
+
 <a name="пример-4"></a>
-**4.**  
+**`@Data` **  
 ```java
 @Data
 @AllArgsConstructor
@@ -52,6 +61,7 @@ public class User {
     private String name;
 }
 ```
+
 `@Data` - *генерирует все стандартные методы: `геттеры`, `сеттеры`, `toString()`, `equals()`, `hashCode()`.* 
 
 `@AllArgsConstructor` - *создаёт конструктор со всеми полями.* 
