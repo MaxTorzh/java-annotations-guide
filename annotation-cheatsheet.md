@@ -405,13 +405,14 @@ public final class User {
 
 *Создаёт неизменяемый (immutable) класс: все поля автоматически становятся private final, сеттеры не создаются, а также генерируются:*
 
-*`toString()`*
+`toString()`
 
-*`equals()` / `hashCode()`*
+`equals()` / `hashCode()`
 
-*`getter (в виде getXxx())`*
+`getter (в виде getXxx())`
 
-*`requiredArgsConstructor()` для всех final полей*
+`requiredArgsConstructor()` для всех final полей
+
 
 *Можно ли использовать на уровне поля?* - **❌ Нет.** 
 
@@ -594,3 +595,20 @@ public class Example {
 *Можно ли использовать на уровне класса?* - **✅ Да.** 
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
+
+---
+
+
+<a name="пример-11"></a>
+**`@SpringBootApplication`**  
+```java
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+*Точка входа Spring Boot*
