@@ -13,7 +13,7 @@
 | `@Getter`/`@Setter`       | Генерирует геттеры/сеттеры для полей класса.                                                        | [Пример](#пример-1) |
 | `@toString`               | Генерирует метод `toString()` с полями класса.                                                      | [Пример](#пример-1) |
 | `@EqualsAndHashCode`      | Генерирует методы `equals() и `hashCode().                                                          | [Пример](#пример-1) |
-| `@Data`                   | Комбинирует `@Getter`, `@Setter`, `@ToString`, `@EqualsAndHashCode` и `@RequiredArgsConstructor`.   | [Пример](#пример-1) |
+| `@Data`                   | Комбинирует `@Getter`, `@Setter`, `@ToString`, `@EqualsAndHashCode` и `@RequiredArgsConstructor`.   | [Пример](#пример-4) |
 | `@NoArgsConstructor`      | Создает конструктор без аргументов.                                                                 | [Пример](#пример-1) |
 | `@AllArgsConstructor`     | Создает конструктор со всеми полями.                                                                | [Пример](#пример-1) |
 | `@RequiredArgsConstructor`| Создает конструктор только для final или @NonNull полей.                                            | [Пример](#пример-2) |
@@ -23,7 +23,26 @@
 
 #### **Примеры**
 <a name="пример-1"></a>
-**1. Простой POJO с Lombok**  
+**1.**
+```java
+public class User {
+    @Getter @Setter
+    private String name;
+
+    @Getter
+    private int age;
+}
+```
+*Генерирует методы `getXXX()` и `setXXX()` для полей.*
+
+*Можно ли использовать на уровне поля?* - **✅ Да.** 
+
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
+
+*Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
+<a name="пример-4"></a>
+**4.**  
 ```java
 @Data
 @AllArgsConstructor
