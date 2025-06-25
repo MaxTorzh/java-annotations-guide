@@ -45,7 +45,7 @@
 
 ---
 <a name="Jakarta"></a>
-## ☕ **Jakarta (ранее Java EE) Annotations**
+## ☕ **Jakarta Annotations**
 
 >**Jakarta EE** — *стандарт для `enterprise-разработки` на Java. Используется для создания серверных приложений, REST API, сервлетов, JPA-сущностей и т.д.*
 
