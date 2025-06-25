@@ -66,6 +66,10 @@ public class User {
     private int age;
 // Метод toString() будет содержать только name.
 }
+```
+
+
+---
 
 
 <a name="пример-4"></a>
