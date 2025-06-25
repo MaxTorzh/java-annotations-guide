@@ -615,11 +615,11 @@ public class Application {
 
 `@SpringBootApplication` объединяет:
 
-        `@Configuration` — класс содержит бины.
+        @Configuration — класс содержит бины.
 
-        `@EnableAutoConfiguration` — автоматическая настройка Spring.
+        @EnableAutoConfiguration — автоматическая настройка Spring.
 
-        `@ComponentScan` — поиск компонентов.
+        @ComponentScan — поиск компонентов.
 
 
 ---
