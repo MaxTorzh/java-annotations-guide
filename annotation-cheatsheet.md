@@ -25,3 +25,21 @@ public class User {
     private Long id;
     private String name;
 }
+
+<a name="пример-2"></a>
+**2. Паттерн Builder с @Builder**  
+```java
+@Builder
+@ToString
+public class Product {
+    private String name;
+    private double price;
+    @Builder.Default 
+    private int quantity = 1;
+}
+
+// Использование:
+Product laptop = Product.builder()
+    .name("MacBook Pro")
+    .price(1999.99)
+    .build();
