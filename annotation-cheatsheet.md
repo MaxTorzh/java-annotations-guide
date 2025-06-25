@@ -85,7 +85,7 @@ public class User {
 ```
 
 
-**Сгенерированные методы:**
+**Сгенерированный код:**
 ```java
 public String getName() { return name; }
 public void setName(String name) { this.name = name; }
@@ -119,7 +119,7 @@ public class User {
 ```
 
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public class User {
     private String name;
@@ -156,7 +156,7 @@ public class User {
 ```
 
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public class User {
     private String name;
@@ -204,7 +204,7 @@ public class User {
 ```
 
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public class User {
     private Long id;
@@ -283,7 +283,7 @@ public class User {
 }
 ```
 
-**Генерируется:**
+**Сгенерированный код:**
 ```java
 public User() {}
 ```
@@ -310,7 +310,7 @@ public class User {
 }
 ```
 
-**Генерируется:**
+**Сгенерированный код:**
 ```java
 public User(String name, int age) {
     this.name = name;
@@ -340,7 +340,7 @@ public class User {
 }
 ```
 
-**Генерируется:**
+**Сгенерированный код:**
 ```java
 public User(String name) {
     this.name = name;
@@ -370,7 +370,7 @@ public class User {
 ```
 
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public final class User {
     private final String name;
@@ -437,7 +437,7 @@ public class Product {
 ```
 
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public class Product {
     private String name;
@@ -506,7 +506,7 @@ public class Product {
 }
 ```
 
-**Сгенерированный код**
+**Сгенерированный код:**
 ```java
 public class Product {
     private String name;
@@ -620,6 +620,28 @@ public class Application {
         @EnableAutoConfiguration — автоматическая настройка Spring.
 
         @ComponentScan — поиск компонентов.
+
+
+---
+
+
+<a name="пример-12"></a>
+**`@RestController`**  
+```java
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    public String getUser(@PathVariable Long id) {
+        return "User ID: " + id;
+    }
+}
+```
+
+*`@RestController`* = `@Controller` + `@ResponseBody`
+
+*`@GetMapping`* — обрабатывает `GET`-запросы
 
 
 ---
