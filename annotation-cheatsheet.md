@@ -613,7 +613,7 @@ public class Application {
 
 *Точка входа Spring Boot*
 
-@`SpringBootApplication` объединяет:
+`@SpringBootApplication` объединяет:
 
         `@Configuration` — класс содержит бины.
 
