@@ -1,7 +1,7 @@
 # 📚 Lombok, Spring Boot & Jakarta Annotations Guide
 
 Краткий справочник по самым полезным аннотациям с примерами и объяснениями.  
-*Для Java-разработчиков, кто устал гуглить одно и то же*.
+*Для тех, кто устал гуглить одно и то же*.
 
 ---
 
@@ -21,9 +21,18 @@
 | `@Builder`                | Паттерн Builder для удобного создания объектов.                                                     | [Пример](#пример-9) |
 | `@Slf4j`                  | Добавляет логгер log через SLF4J.                                                                   | [Пример](#пример-10) |
 
+
+---
+
+
 #### **Примеры**
+
+
+---
+
+
 <a name="пример-1"></a>
-**`@Getter`/`@Setter`**
+###**`@Getter`/`@Setter`**
 ```java
 public class User {
     @Getter @Setter
@@ -58,7 +67,7 @@ public int getAge() { return age; }
 
 
 <a name="пример-2"></a>
-**`@toString`**
+###**`@toString`**
 ```java
 @ToString(of = {"name"})
 public class User {
@@ -95,7 +104,7 @@ public class User {
 
 
 <a name="пример-3"></a>
-**`@EqualsAndHashCode`**
+###**`@EqualsAndHashCode`**
 ```java
 @EqualsAndHashCode(of = {"name"})
 public class User {
@@ -142,7 +151,7 @@ public class User {
 
 
 <a name="пример-4"></a>
-**`@Data`**  
+###**`@Data`**  
 ```java
 @Data
 @AllArgsConstructor
@@ -219,7 +228,7 @@ public class User {
 
 
 <a name="пример-5"></a>
-**`@NoArgsConstructor`**  
+###**`@NoArgsConstructor`**  
 ```java
 @NoArgsConstructor
 public class User {
@@ -245,7 +254,7 @@ public User() {}
 
 
 <a name="пример-6"></a>
-**`@AllArgsConstructor`**  
+###**`@AllArgsConstructor`**  
 ```java
 @AllArgsConstructor
 public class User {
@@ -275,7 +284,7 @@ public User(String name, int age) {
 
 
 <a name="пример-7"></a>
-**` @RequiredArgsConstructor`**  
+###**` @RequiredArgsConstructor`**  
 ```java
 @RequiredArgsConstructor
 public class User {
@@ -304,7 +313,7 @@ public User(String name) {
 
 
 <a name="пример-8"></a>
-**` @Value`**  
+###**` @Value`**  
 ```java
 @Value
 public class User {
