@@ -49,9 +49,27 @@ public void setName(String name) { this.name = name; }
 public int getAge() { return age; }
 // setAge() не генерируется для age
 ```
+*Генерирует метод toString(), включающий значения указанных полей.*
+
+*Можно ли использовать на уровне поля?* - **✅ Да.** 
+
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
+
+*Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
+<a name="пример-2"></a>
+**`@toString`**
+```java
+@ToString(of = {"name"})
+public class User {
+    private String name;
+    private int age;
+// Метод toString() будет содержать только name.
+}
+
 
 <a name="пример-4"></a>
-**`@Data` **  
+**`@Data`**  
 ```java
 @Data
 @AllArgsConstructor
