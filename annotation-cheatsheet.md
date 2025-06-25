@@ -34,5 +34,7 @@ public class User {
 }
 ```
 `@Data` - *генерирует все стандартные методы: `геттеры`, `сеттеры`, `toString()`, `equals()`, `hashCode()`.* 
+
 `@AllArgsConstructor` - *создаёт конструктор со всеми полями.* 
+
 `@NoArgsConstructor` - *конструктор без аргументов.*
