@@ -32,7 +32,7 @@
 
 
 <a name="пример-1"></a>
-###**`@Getter`/`@Setter`**
+**`@Getter`/`@Setter`**
 ```java
 public class User {
     @Getter @Setter
@@ -67,7 +67,7 @@ public int getAge() { return age; }
 
 
 <a name="пример-2"></a>
-###**`@toString`**
+**`@toString`**
 ```java
 @ToString(of = {"name"})
 public class User {
@@ -104,7 +104,7 @@ public class User {
 
 
 <a name="пример-3"></a>
-###**`@EqualsAndHashCode`**
+**`@EqualsAndHashCode`**
 ```java
 @EqualsAndHashCode(of = {"name"})
 public class User {
@@ -151,7 +151,7 @@ public class User {
 
 
 <a name="пример-4"></a>
-###**`@Data`**  
+**`@Data`**  
 ```java
 @Data
 @AllArgsConstructor
@@ -223,12 +223,18 @@ public class User {
 
 `@NoArgsConstructor` - *конструктор без аргументов.*
 
+*Можно ли использовать на уровне поля?* - **✅ Да.** 
+
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
+
+*Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
 
 ---
 
 
 <a name="пример-5"></a>
-###**`@NoArgsConstructor`**  
+**`@NoArgsConstructor`**  
 ```java
 @NoArgsConstructor
 public class User {
@@ -254,7 +260,7 @@ public User() {}
 
 
 <a name="пример-6"></a>
-###**`@AllArgsConstructor`**  
+**`@AllArgsConstructor`**  
 ```java
 @AllArgsConstructor
 public class User {
@@ -284,7 +290,7 @@ public User(String name, int age) {
 
 
 <a name="пример-7"></a>
-###**` @RequiredArgsConstructor`**  
+**`@RequiredArgsConstructor`**  
 ```java
 @RequiredArgsConstructor
 public class User {
@@ -313,7 +319,7 @@ public User(String name) {
 
 
 <a name="пример-8"></a>
-###**` @Value`**  
+**`@Value`**  
 ```java
 @Value
 public class User {
@@ -356,13 +362,6 @@ public final class User {
 }
 ```
 
-**Генерируется:**
-```java
-public User(String name) {
-    this.name = name;
-}
-```
-
 *Создаёт неизменяемый (immutable) класс: все поля автоматически становятся private final, сеттеры не создаются, а также генерируются:*
 
 *`toString()`*
@@ -373,8 +372,184 @@ public User(String name) {
 
 *`requiredArgsConstructor()` для всех final полей*
 
-*Можно ли использовать на уровне поля?* - **✅ Да.** 
+*Можно ли использовать на уровне поля?* - **❌ Нет.** 
 
-*Можно ли использовать на уровне класса?* - **❌ Нет.** 
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
+
+*Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
+
+---
+
+
+<a name="пример-9"></a>
+**`@Builder`**  
+```java
+@Builder
+public class Product {
+    private String name;
+    @Builder.Default
+    private int quantity = 1;
+    private double price;
+}
+```
+
+
+**Сгенерированный код**
+```java
+public class Product {
+    private String name;
+    private int quantity = 1;
+    private double price;
+
+    Product(String name, int quantity, double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public static ProductBuilder builder() {
+        return new ProductBuilder();
+    }
+
+    public static class ProductBuilder {
+        private String name;
+        private int quantity = 1;
+        private double price;
+
+        ProductBuilder() {}
+
+        public ProductBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ProductBuilder quantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public ProductBuilder price(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(name, quantity, price);
+        }
+    }
+}
+```
+
+*Реализует паттерн Builder, позволяя создавать объекты пошагово, особенно удобно для классов с множеством полей или необязательных параметров.*
+
+*Можно ли использовать на уровне поля?* - **✅ Да (с `@Builder.Default`).** 
+
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
+
+*Можно ли использовать на уровне конструктора?* - **❌ Нет.**
+
+
+---
+
+
+**Пример с `@Builder.Default`:**
+```java
+@Builder
+public class Product {
+    private String name;
+    @Builder.Default
+    private int quantity = 1;
+    private double price;
+}
+```
+
+**Сгенерированный код**
+```java
+public class Product {
+    private String name;
+    private int quantity = 1;
+    private double price;
+
+    Product(String name, int quantity, double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public static ProductBuilder builder() {
+        return new ProductBuilder();
+    }
+
+    public static class ProductBuilder {
+        private String name;
+        private int quantity = 1;
+        private double price;
+
+        ProductBuilder() {}
+
+        public ProductBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ProductBuilder quantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public ProductBuilder price(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(name, quantity, price);
+        }
+    }
+}
+```
+
+*@Builder.Default позволяет задать значение по умолчанию, которое не перезаписывается, если явно не указано.*
+
+**🛠 Как использовать:**
+```java
+Product product = Product.builder()
+    .name("Laptop")
+    .price(999.99)
+    .build(); // quantity будет 1 по умолчанию
+```
+
+
+---
+
+
+<a name="пример-10"></a>
+**`@Slf4j`**  
+```java
+@Slf4j
+public class Example {
+    public void doSomething() {
+        log.info("Hello from Lombok!");
+    }
+}
+```
+
+**Сгенерированный код:**
+```java
+public class Example {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Example.class);
+
+    public void doSomething() {
+        log.info("Hello from Lombok!");
+    }
+}
+```
+
+*Генерирует конструктор только для final полей или полей с аннотацией @NonNull.*
+
+*Можно ли использовать на уровне поля?* - **❌ Нет** 
+
+*Можно ли использовать на уровне класса?* - **✅ Да.** 
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
