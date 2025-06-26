@@ -252,6 +252,154 @@ public @interface ValidLogin {
 ---
 
 
+## Шаг 2: Создание валидатора
+
+### Создание класса LoginValidator.java
+```java
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import java.util.regex.Pattern;
+
+public class LoginValidator implements ConstraintValidator<ValidLogin, String> {
+    // Регулярное выражение для проверки логина
+    private static final String LOGIN_PATTERN = "^[a-zA-Z0-9_-]{4,20}$";
+
+    @Override
+    public boolean isValid(String login, ConstraintValidatorContext context) {
+        if (login == null) {
+            return false; // null не считается валидным
+        }
+        return Pattern.matches(LOGIN_PATTERN, login);
+    }
+}
+```
+
+### Разбор регулярки ^[a-zA-Z0-9_-]{4,20}$:
+
+`^ и $` — *начало и конец строки.*
+
+`[a-zA-Z0-9_-]` — *разрешены латинские буквы, цифры, _, -. Специальные символы и пробелы запрещены*
+
+`{4,20}` — *длина от 4 до 20 символов.*
+
+
+---
+
+
+## Шаг 3: Применение аннотации
+
+### Использование `@ValidLogin` в DTO или сущности:
+
+```java
+public class UserRegistrationDto {
+    @ValidLogin
+    private String username;
+}
+```
+
+
+---
+
+
+## Шаг 4: Валидация в Spring Boot
+
+### Добавление @Valid в контроллере:
+
+```java
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@Valid @RequestBody UserRegistrationDto dto) {
+        return ResponseEntity.ok("Логин корректен!");
+    }
+}
+```
+
+
+*Пример запроса:*
+
+```json
+{
+    "username": "max_torzh-123"
+}
+```
+
+
+Если логин некорректен (например, "max@torzh"), Spring вернет:
+
+```json
+{
+    "timestamp": "2023-11-20T12:00:00",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Некорректный логин. Разрешены латинские буквы, цифры, '_', '-'. Длина: 4-20 символов"
+}
+```
+
+
+---
+
+
+## 🔹 Дополнительные улучшения
+
+
+1. Кастомизация сообщения
+
+*Можно переопределить сообщение при использовании:*
+```java
+@ValidLogin(message = "Логин должен быть от 4 до 20 символов без спецсимволов")
+private String username;
+```
+
+
+---
+
+
+2. Проверка уникальности логина
+
+*Расширение валидатора, чтобы он проверял логин в БД:*
+```java
+public class LoginValidator implements ConstraintValidator<ValidLogin, String> {
+    @Autowired
+    private UserRepository userRepository; // Предположим, что есть репозиторий
+
+    @Override
+    public boolean isValid(String login, ConstraintValidatorContext context) {
+        if (login == null || !Pattern.matches("^[a-zA-Z0-9_-]{4,20}$", login)) {
+            return false;
+        }
+        return !userRepository.existsByUsername(login); // Проверяем уникальность
+    }
+}
+```
+
+### Важно: Не забывать добавить @Component к валидатору, если используются Spring-бины.
+
+
+---
+
+
+## 🔹 Итог
+
+1. Создание аннотации @ValidLogin.
+
+2. Создание валидатора с регулярным выражением.
+
+3. Применение к DTO и контроллеру.
+
+4. Добавление обработки ошибок через Spring.
+
+*Такой подход позволяет:*
+
+1. Упростить проверки в коде.
+
+2. Использовать аннотации повторно.
+
+3. Легко менять правила валидации.
+
+---
+
 #### **Примеры**
 
 
