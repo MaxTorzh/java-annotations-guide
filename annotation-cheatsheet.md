@@ -251,7 +251,7 @@ public @interface ValidLogin {
 
 ---
 
-[Создание валидатора](#Validator)
+[Обратно к блоку кода](#Annotation)
 <a name="Validator"></a>
 ## Шаг 2: Создание валидатора
 
@@ -286,7 +286,7 @@ public class LoginValidator implements ConstraintValidator<ValidLogin, String> {
 
 ---
 
-[Применение кастомной аннотации](#UseAnnotation)
+[Обратно к блоку кода](#Annotation)
 <a name="UseAnnotation"></a>
 ## Шаг 3: Применение аннотации
 
@@ -302,7 +302,7 @@ public class UserRegistrationDto {
 
 ---
 
-[Пример валидации](#ValidationExample)
+[Обратно к блоку кода](#Annotation)
 <a name="ValidationExample"></a>
 ## Шаг 4: Валидация в Spring Boot
 
