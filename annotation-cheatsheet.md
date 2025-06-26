@@ -102,7 +102,8 @@
 
 
 ## Шаг 1: Создание аннотации
-
+[Как это работает?](#HowDoesItWorks)
+<a name="Annotation"></a>
 ### Создание класса ValidLogin.java
 ```java
 import jakarta.validation.Constraint;
@@ -122,7 +123,8 @@ public @interface ValidLogin {
 
 ### Что здесь важно?
 
-`@Target` - *где можно применять аннотацию.*
+
+### `@Target` - *где можно применять аннотацию.*
 
 *Параметры (из ElementType):*
 
@@ -137,10 +139,117 @@ public @interface ValidLogin {
 - CONSTRUCTOR — конструкторы.
 
 
-## Продолжение следует ... 
+### `@Retention` — *определяет, на каком этапе аннотация сохраняется в JVM.*
+
+*Параметры (из RetentionPolicy):*
+
+`SOURCE` — *аннотация удаляется при компиляции (например, @Override).*
+
+`CLASS` — *сохраняется в .class-файле, но недоступна в runtime (редко используется).*
+
+`RUNTIME` — *аннотация доступна во время выполнения (обязательно для валидаторов).*
+
+```java
+@Retention(RetentionPolicy.RUNTIME) // Аннотация будет доступна через рефлексию
+public @interface ValidLogin {}
+```
+
+
+### `@Constraint` — *связь с валидатором. Указывает, какой класс реализует логику проверки.*
+
+*Обязательные параметры:*
+
+`validatedBy` — *класс-валидатор (реализует ConstraintValidator).*
+
+```java
+@Constraint(validatedBy = LoginValidator.class) // Логика проверки в LoginValidator
+public @interface ValidLogin {}
+```
+
+
+### `Payload` — *передача метаданных. Это механизм для добавления дополнительной информации об ошибке валидации.*
+
+*Для чего используется:*
+
+*Группировка ошибок (например, "критические" vs "предупреждения").*
+
+*Кастомизация обработки ошибок в разных сценариях.*
+
+```java
+public @interface ValidLogin {
+    Class<? extends Payload>[] payload() default {}; // Пустой массив по умолчанию
+}
+```
+
 
 ---
 
+
+### Пример использования:
+
+*Создаем свой Payload:*
+```java
+public class Severity {
+    interface Critical extends Payload {} // Маркерный интерфейс
+}
+```
+
+*Указываем его в аннотации:*
+```java
+@ValidLogin(payload = Severity.Critical.class)
+private String username;
+```
+
+*В валидаторе можно получить доступ к payload:*
+```java
+context.unwrap(HibernateConstraintValidatorContext.class)
+       .addMessageParameter("severity", "critical");
+```
+
+
+---
+
+
+[Обратно к аннотации](#Annotation)
+<a name="HowDoesItWorks"></a>
+## Как это работает вместе?
+
+*Компилятор видит @ValidLogin над полем/параметром.*
+
+*В runtime Hibernate Validator ищет класс из validatedBy.*
+
+*Валидатор (LoginValidator) проверяет значение.*
+
+*Если ошибка — используется message, а payload передает метаданные.*
+
+
+---
+
+
+## FAQ
+
+1. *Можно ли создать аннотацию без payload?*
+Да, но тогда нельзя будет группировать ошибки или передавать допполнительные данные.
+
+2. *Что такое groups?*
+Аналогично payload, но для группировки валидаций (например, "шаг 1 формы", "шаг 2 формы").
+
+3. *Почему @Retention(RUNTIME) обязательно?*
+Без этого аннотация "исчезнет" после компиляции, и валидатор не сможет её обнаружить.
+
+4. *Как добавить параметры в аннотацию?*
+Например, для настройки минимальной длины:
+```java
+public @interface ValidLogin {
+    int minLength() default 4;
+    int maxLength() default 20;
+}
+```
+
+Затем необходимо использовать эти значения в валидаторе через constraintAnnotation.minLength().
+
+
+---
 
 
 #### **Примеры**
@@ -740,11 +849,11 @@ public class Application {
 
 `@SpringBootApplication` *объединяет:*
 
-        @Configuration — *обозначение, что класс содержит бины.*
+        `@Configuration` — *обозначение, что класс содержит бины.*
 
-        @EnableAutoConfiguration — *автоматическая настройка Spring.*
+        `@EnableAutoConfiguration` — *автоматическая настройка Spring.*
 
-        @ComponentScan — *поиск компонентов.*
+        `@ComponentScan` — *поиск компонентов.*
 
 [Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
 
