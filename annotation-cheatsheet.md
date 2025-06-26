@@ -102,7 +102,7 @@
 
 
 ## Шаг 1: Создание аннотации
-[Как это работает?](#HowDoesItWorks)
+[Как аннотации работают вместе?](#HowDoesItWorks) / [Как написать валидатор?](#Validator) / [Как применить кастомную аннотацию?](#UseAnnotation) / [Пример валидации](#ValidationExample)
 <a name="Annotation"></a>
 ### Создание класса ValidLogin.java
 ```java
@@ -210,7 +210,7 @@ context.unwrap(HibernateConstraintValidatorContext.class)
 ---
 
 
-[Обратно к аннотации](#Annotation)
+[Обратно к блоку кода](#Annotation)
 <a name="HowDoesItWorks"></a>
 ## Как это работает вместе?
 
@@ -251,7 +251,8 @@ public @interface ValidLogin {
 
 ---
 
-
+[Создание валидатора](#Validator)
+<a name="Validator"></a>
 ## Шаг 2: Создание валидатора
 
 ### Создание класса LoginValidator.java
@@ -285,7 +286,8 @@ public class LoginValidator implements ConstraintValidator<ValidLogin, String> {
 
 ---
 
-
+[Применение кастомной аннотации](#UseAnnotation)
+<a name="UseAnnotation"></a>
 ## Шаг 3: Применение аннотации
 
 ### Использование `@ValidLogin` в DTO или сущности:
@@ -300,7 +302,8 @@ public class UserRegistrationDto {
 
 ---
 
-
+[Пример валидации](#ValidationExample)
+<a name="ValidationExample"></a>
 ## Шаг 4: Валидация в Spring Boot
 
 ### Добавление @Valid в контроллере:
