@@ -330,7 +330,7 @@ public class AuthController {
 
 ```json
 {
-    "timestamp": "2023-11-20T12:00:00",
+    "timestamp": "2025-01-01T01:01:01",
     "status": 400,
     "error": "Bad Request",
     "message": "Некорректный логин. Разрешены латинские буквы, цифры, '_', '-'. Длина: 4-20 символов"
