@@ -86,6 +86,25 @@
 | `@Valid`    |  Каскадная валидация. Валидирует вложенные объекты.                                        | [Пример](#пример-40) |
 | `@AssertTrue / @AssertFalse`                 | Проверяет булево значение.                                                                     | [Пример](#пример-41) |
 
+---
+
+<a name="ResponseRequest"></a>
+## 🌱 **Аннотации запросов и ответов**
+
+### **Генерация кода**
+| Аннотация                 | Описание                                                                                            | Пример |
+|---------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| `@PathVariable`           | Взятие данных из URL.       | [Пример](#пример-42) |
+| `@RequestParam`         | Параметры запроса.                                                             | [Пример](#пример-43) |
+| `@RequestHeader`         | Работа с заголовками.                                                      | [Пример](#пример-44) |
+| `@RequestBody`          | Десериализация JSON/XML.                        | [Пример](#пример-45) |
+| `@ResponseBody`              | Сериализация в JSON.                                                   | [Пример](#пример-46) |
+| `@RestController`, `@Controller`| Отличия в реализации.                                                | [Пример](#пример-47) |
+| `ResponseEntity`          | Полный контроль.                                                                   | [Пример](#пример-48) |
+| `MultipartFile`                   | Загрузка файлов.                                                      | [Пример](#пример-49) |
+| `Скачивание файлов`                  | Внедряет значения из application.properties.                                                        | [Пример](#пример-50) |
+
+
 
 
 ---
@@ -439,8 +458,7 @@ public int getAge() { return age; }
 *Можно ли использовать на уровне поля?* - **✅ Да.** 
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 ---
 
@@ -477,8 +495,7 @@ public class User {
 *Можно ли использовать на уровне поля?* - **✅ Да.** 
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -527,7 +544,7 @@ public class User {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -612,7 +629,7 @@ public class User {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -640,7 +657,7 @@ public User() {}
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -671,8 +688,7 @@ public User(String name, int age) {
 *Можно ли использовать на уровне поля?* - **❌ Нет.** 
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -736,7 +752,7 @@ public class User {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -802,7 +818,7 @@ public final class User {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -943,7 +959,7 @@ Product product = Product.builder()
     .build(); // quantity будет 1 по умолчанию
 ```
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -979,7 +995,7 @@ public class Example {
 
 *Можно ли использовать на уровне конструктора?* - **❌ Нет.**
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1006,7 +1022,7 @@ public class Application {
 
         `@ComponentScan` — *поиск компонентов.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1032,7 +1048,7 @@ public class UserController {
 
 `@GetMapping` — *обработка `GET`- запроса.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1057,8 +1073,7 @@ public class UserController {
 */users/{id} - обработка методом getUser.*
 
 *Можно указать HTTP-метод через параметр: method = RequestMethod.GET*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1095,8 +1110,7 @@ public class UserController {
 
 `@RequestBody` - *преобразование тела HTTP-запроса (обычно JSON или XML) в Java-объект. Используется в REST API для приема данных от клиента (например, при POST/PUT-запросах).*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
-
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 ---
 
@@ -1133,7 +1147,7 @@ public class MyController {
 
 `@GetMapping` - *упрощённая версия @RequestMapping для конкретного HTTP-метода.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1159,8 +1173,7 @@ public class MyComponent {}
 `@Service` — *бизнес-логика.*
 
 `@Repository` — *доступ к данным, также предоставляет специфичные исключения.*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1187,7 +1200,7 @@ public class AppConfig {
 
 *Может быть сканирован как часть контекста Spring.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1212,8 +1225,7 @@ public class AppConfig {
 *Возвращает объект, который становится частью Spring-контекста.*
 
 *Имя бина по умолчанию — имя метода (myService).*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1239,7 +1251,7 @@ public class MyComponent {
 
 `@Component` — *это базовая аннотация Spring, которая помечает класс как "компонент", подлежащий автоматическому обнаружению и регистрации в контексте Spring. Классы с этой аннотацией становятся Spring-бинами и могут быть внедрены в другие компоненты через DI (Dependency Injection).*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1263,7 +1275,7 @@ public class DevConfig {
 
 `@Component` — *это базовая аннотация Spring, которая помечает класс как "компонент", подлежащий автоматическому обнаружению и регистрации в контексте Spring. Классы с этой аннотацией становятся Spring-бинами и могут быть внедрены в другие компоненты через DI (Dependency Injection).*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1288,7 +1300,7 @@ public class User {
 
 *По умолчанию имя таблицы совпадает с именем класса.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1314,7 +1326,7 @@ public class User {
 
 *Указывает, что данные будут храниться в таблице users_table.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1338,7 +1350,7 @@ public class User {
 
 *Обязательно для каждой сущности.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1370,8 +1382,7 @@ public class User {
 `SEQUENCE` — *последовательность.*
 
 `TABLE` — *эмуляция через таблицу.*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1402,8 +1413,7 @@ public class User {
 *Не может быть null.*
 
 *Максимальная длина — 100 символов.*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1451,7 +1461,7 @@ public class Order {
 
 `@ManyToMany` — *многие ко многим.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1471,7 +1481,7 @@ private User user;
 
 `@JoinColumn` - *используется для связи между сущностями, указывает на внешний ключ (foreign key), связывающий две таблицы.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1501,8 +1511,7 @@ public class User {
 *Это не то же самое, что ключевое слово `transient` в Java (хотя эффект похож).*
 
 `@Transient` *переопределяет поведение JPA, даже если поле не помечено как `transient`.*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1537,7 +1546,7 @@ public enum Role {
 
 *Изменение порядка элементов в enum может сломать данные, если используется `EnumType.ORDINAL`.*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1577,7 +1586,7 @@ CREATE TABLE user (
 );
 ```
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1594,8 +1603,7 @@ public class User {
 `NotNull` - *Поле не может быть null.*
 
 *Если передать null → Ошибка: "Имя не может быть пустым".*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1614,7 +1622,7 @@ public class Post {
 
 *Если content.length() = 5 → Ошибка: "Текст должен быть от 10 до 500 символов".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1633,7 +1641,7 @@ public class Product {
 
 *Если price = 0 → Ошибка: "Цена не может быть меньше 1".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1652,8 +1660,7 @@ public class Account {
 
 *Если balance = -100 → Ошибка: "Баланс должен быть положительным".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
-
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 ---
 
@@ -1671,7 +1678,7 @@ public class Invoice {
 
 *Если amount = 12345.678 → Ошибка: "Формат: до 4 цифр до точки и 2 после".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1689,8 +1696,7 @@ public class Comment {
 `@NotBlank` - *Проверка, что строка не пустая (и не состоит из пробелов).*
 
 *Если text = " " → Ошибка: "Комментарий не может быть пустым".*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1708,8 +1714,7 @@ public class Contact {
 `@Email` - *Проверка формата email.*
 
 *Если email = "user.ru@" → Ошибка: "Некорректный email"*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1730,7 +1735,7 @@ public class Password {
 
 *Если password = "qwerty" → Ошибка: "Пароль: 8+ символов, 1 заглавная буква, 1 цифра".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1750,7 +1755,7 @@ public class Event {
 
 *Если eventDate = 2025-01-01 → Ошибка: "Дата события должна быть в будущем".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1775,8 +1780,7 @@ public class Address {
 `@NotBlank` - *Проверка, что строка не пустая (и не состоит из пробелов).*
 
 *Если deliveryAddress.city = null → Ошибка: "city не может быть пустым".*
-
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
@@ -1795,7 +1799,46 @@ public class Subscription {
 
 *Если termsAccepted = false → Ошибка: "Необходимо согласие с условиями".*
 
-[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation)
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-42"></a>
+**`@PathVariable`**  
+
+Что делает:
+
+Извлекает динамическую часть URL (например, /posts/42 → id=42).
+
+Глубокие нюансы:
+
+Типы данных: Может быть int, String, UUID, и даже кастомные объекты (с конвертерами).
+
+Валидация: Добавьте @Min, @Max для проверки:
+```java
+@GetMapping("/posts/{id}")
+public String getPost(@PathVariable @Min(1) int id) // id должен быть ≥ 1
+```
+
+Регулярные выражения: Ограничьте формат:
+```java
+@GetMapping("/posts/{id:[0-9]+}") // Только цифры
+```
+
+Пример с несколькими переменными:
+```java
+@GetMapping("/users/{userId}/posts/{postId}")
+public String getPost(
+    @PathVariable Long userId,
+    @PathVariable Long postId
+) {
+    return "User: " + userId + ", Post: " + postId;
+}
+```
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
 
 ---
