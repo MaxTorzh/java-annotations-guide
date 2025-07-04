@@ -1810,33 +1810,253 @@ public class Subscription {
 
 Что делает:
 
-Извлекает динамическую часть URL (например, /posts/42 → id=42).
+Извлекает переменные из пути URL.
 
-Глубокие нюансы:
+Особенности:
 
-Типы данных: Может быть int, String, UUID, и даже кастомные объекты (с конвертерами).
+Имя параметра должно совпадать с {id} в пути.
 
-Валидация: Добавьте @Min, @Max для проверки:
+Можно использовать регулярные выражения: @PathVariable("id").
+
 ```java
-@GetMapping("/posts/{id}")
-public String getPost(@PathVariable @Min(1) int id) // id должен быть ≥ 1
-```
-
-Регулярные выражения: Ограничьте формат:
-```java
-@GetMapping("/posts/{id:[0-9]+}") // Только цифры
-```
-
-Пример с несколькими переменными:
-```java
-@GetMapping("/users/{userId}/posts/{postId}")
-public String getPost(
-    @PathVariable Long userId,
-    @PathVariable Long postId
-) {
-    return "User: " + userId + ", Post: " + postId;
+@GetMapping("/users/{id}")
+public String getUser(@PathVariable Long id) {
+    return "User ID: " + id;  // Для /users/123 → "User ID: 123"
 }
 ```
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-43"></a>
+**`@RequestParam`**  
+
+Что делает:
+
+Получает параметры после ? в URL.
+
+Пример запроса:
+
+/search?query=Spring&page=2 → Query: Spring, Page: 2.
+
+```java
+@GetMapping("/search")
+public String search(@RequestParam String query, 
+                    @RequestParam(required = false, defaultValue = "1") int page) {
+    return "Query: " + query + ", Page: " + page;
+}
+```
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-44"></a>
+**`@RequestHeader`**  
+
+Что делает:
+
+Достаёт значения HTTP-заголовков.
+
+```java
+@GetMapping("/info")
+public String getInfo(@RequestHeader("User-Agent") String userAgent) {
+    return "Your browser: " + userAgent;
+}
+```
+
+Пример вывода:
+
+Your browser: Mozilla/5.0 (Windows NT 10.0).
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-45"></a>
+**`@RequestBody`**  
+
+Что делает:
+
+Преобразует тело запроса в Java-объект.
+
+
+```java
+@PostMapping("/users")
+public User createUser(@RequestBody User user) {
+    // user автоматически преобразуется из JSON
+    return userService.save(user);
+}
+```
+
+Тело запроса (JSON):
+
+```json
+{"name": "John", "age": 25}
+```
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-46"></a>
+**`@ResponseBody`**  
+
+Что делает:
+
+Возвращает объект как JSON/XML.
+
+
+```java
+@GetMapping("/users/{id}")
+@ResponseBody
+public User getUser(@PathVariable Long id) {
+    return userService.findById(id); // Автоматически в JSON
+}
+```
+
+Альтернатива: Используйте `@RestController` вместо `@Controller.`
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-47"></a>
+**`@RestController`**  
+
+Что делает:
+
+Возвращает объект как JSON/XML (@ResponseBody включён). Используется в REST API
+
+
+**`@Controller`**  
+
+Что делает:
+
+Возвращает имя шаблона (HTML). Используется в веб-приложениях (MVC)
+
+
+```java
+@RestController
+public class UserController {
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        return userService.findAll(); // Автоматически в JSON
+    }
+}
+```
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-48"></a>
+**`ResponseEntity`**  
+
+Что делает:
+
+Настройка статуса, заголовков и тела ответа.
+
+
+```java
+@GetMapping("/users/{id}")
+public ResponseEntity<User> getUser(@PathVariable Long id) {
+    User user = userService.findById(id);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("X-Custom-Header", "Hello");
+    return ResponseEntity.status(HttpStatus.OK).headers(headers).body(user);
+}
+```
+
+Возможности: 
+
+`ResponseEntity.ok(user)` — статус 200.
+
+`ResponseEntity.notFound()` — статус 404.
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-49"></a>
+**`MultipartFile`**  
+
+Что делает:
+
+Приём файлов от клиента.
+
+
+```java
+@PostMapping("/upload")
+public String uploadFile(@RequestParam("file") MultipartFile file) {
+    String fileName = file.getOriginalFilename();
+    file.transferTo(new File("/uploads/" + fileName));
+    return "File uploaded: " + fileName;
+}
+```
+
+HTML-форма:
+
+
+```html
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button>Upload</button>
+</form>
+```
+
+
+[Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
+
+
+---
+
+
+<a name="пример-50"></a>
+**`Скачивание файлов`**  
+
+Что делает:
+
+Отправка файла клиенту.
+
+
+```java
+@GetMapping("/download/{fileName}")
+public ResponseEntity<byte[]> downloadFile(@PathVariable String fileName) throws IOException {
+    byte[] fileData = Files.readAllBytes(Paths.get("/uploads/" + fileName));
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentDisposition(ContentDisposition.attachment().filename(fileName).build());
+    return ResponseEntity.ok().headers(headers).body(fileData);
+}
+```
+
+Особенности:
+
+`ContentDisposition.attachment()` — браузер скачает файл.
+
+
+```
+
 
 [Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
 
