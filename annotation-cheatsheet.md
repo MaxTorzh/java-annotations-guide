@@ -2055,7 +2055,4 @@ public ResponseEntity<byte[]> downloadFile(@PathVariable String fileName) throws
 `ContentDisposition.attachment()` — браузер скачает файл.
 
 
-```
-
-
 [Обратно к Lombok](#Lombok) / [Обратно к Spring Boot Annotations](#SpringBootAnnotations) / [Обратно к Jakarta](#Jakarta) / [Обратно к Jakarta Bean Validation](#JakartaBeanValidation) / [Обратно к аннотациям запрос-ответ](#ResponseRequest)
